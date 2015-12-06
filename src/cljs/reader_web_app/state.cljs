@@ -1,4 +1,5 @@
-(ns reader-web-app.state)
+(ns reader-web-app.state
+  (:require [alandipert.storage-atom :refer [local-storage]]))
 
 (def book "<title>
       <p>Isaac Asimov</p>
@@ -794,22 +795,20 @@
     </section>
   ")
 
-(defonce app-state (atom {:route :home
-                          ;; route params
-                          :params {}
-                          ;; list of books to render
-                          ;; without any caching
-                          :books {:is-fetching false
-                                  :items [{:id 1 :title "yo 1", :cover nil}
-                                          {:id 2 :title "yo 2", :cover "http://payload.cargocollective.com/1/4/128429/2040423/45cd8ec84e303febca9f661e1f7f0264.jpg"}
-                                          {:id 3 :title "yo 3", :cover nil}
-                                          {:id 4 :title "yo 4", :cover "http://www.beautifulbookcovers.com/wp-content/uploads/2013/02/the-teleportation-accident-cover-art.jpeg"}]}
-                          ;; book for reading
-                          :book { 1 {:is-fetching false :book book}}
-                          ;; user settings
-                          :settings {}
-                          ;; user data about books – progress, etc
-                          :data {}
-                          ;; all notifications
-                          :uploading {:in-progress false}
-                          :notifications []}))
+(defonce app-state (local-storage (atom {:route :home
+                                         ;; route params
+                                         :params {}
+                                         ;; list of books to render
+                                         ;; without any caching
+                                         :books {:is-fetching false
+                                                 :items [{:id 1 :title "yo 1", :cover "http://payload.cargocollective.com/1/4/128429/2040423/45cd8ec84e303febca9f661e1f7f0264.jpg"}
+                                                         {:id 2 :title "yo 2", :cover nil}]}
+                                         ;; book for reading
+                                         :book { "1" {:is-fetching false :book book}}
+                                         ;; user settings
+                                         :settings {}
+                                         ;; user data about books – progress, etc
+                                         :data {}
+                                         ;; all notifications
+                                         :uploading {:in-progress false}
+                                         :notifications []}) :shelf-application))
