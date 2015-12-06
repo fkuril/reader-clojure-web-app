@@ -800,8 +800,10 @@
                           ;; list of books to render
                           ;; without any caching
                           :books {:is-fetching false
-                                  :items [{:id 1 :title "yo 1", :cover "http://payload.cargocollective.com/1/4/128429/2040423/45cd8ec84e303febca9f661e1f7f0264.jpg"}
-                                          {:id 2 :title "yo 2", :cover nil}]}
+                                  :items [{:id 1 :title "yo 1", :cover nil}
+                                          {:id 2 :title "yo 2", :cover "http://payload.cargocollective.com/1/4/128429/2040423/45cd8ec84e303febca9f661e1f7f0264.jpg"}
+                                          {:id 3 :title "yo 3", :cover nil}
+                                          {:id 4 :title "yo 4", :cover "http://www.beautifulbookcovers.com/wp-content/uploads/2013/02/the-teleportation-accident-cover-art.jpeg"}]}
                           ;; book for reading
                           :book { 1 {:is-fetching false :book book}}
                           ;; user settings
